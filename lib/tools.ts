@@ -125,55 +125,50 @@
 //   }
 // }
 
-import { z } from "zod";
-import { SchemaType } from "@google/generative-ai";
-import { createServiceRoleClient } from "./supabase/server";
-
-// ─── Zod Schemas (validate BEFORE executing) ────────────────────────────────
+import { z } from 'zod'
+import { SchemaType, FunctionDeclaration } from '@google/generative-ai'
+import { createServiceRoleClient } from './supabase/server'
 
 export const saveTaskSchema = z.object({
   title: z.string().min(1).max(500),
-});
+})
 
 export const sendNotificationSchema = z.object({
   message: z.string().min(1).max(2000),
-});
+})
 
-// ─── Tool Declarations for Gemini ───────────────────────────────────────────
-
-export const toolDeclarations = [
+export const toolDeclarations: FunctionDeclaration[] = [
   {
-    name: "save_task",
-    description:
-      "Save an action item or task derived from the documents into this workspace. Use when the user asks to create a task, to-do, or action item.",
+    name: 'save_task',
+    description: 'Save an action item or task derived from the documents into this workspace. Use when the user asks to create a task, to-do, or action item.',
     parameters: {
       type: SchemaType.OBJECT,
       properties: {
         title: {
           type: SchemaType.STRING,
-          description: "The task title, max 500 characters",
+          description: 'The task title, max 500 characters',
+          nullable: false,
         },
       },
-      required: ["title"],
+      required: ['title'],
     },
   },
   {
-    name: "send_notification",
-    description:
-      "Send a summary or notification to the team Discord channel. Use when the user explicitly asks to share or notify the team about something.",
+    name: 'send_notification',
+    description: 'Send a summary or notification to the team Discord channel. Use when the user explicitly asks to share or notify the team about something.',
     parameters: {
       type: SchemaType.OBJECT,
       properties: {
         message: {
           type: SchemaType.STRING,
-          description: "The message to send, max 2000 characters",
+          description: 'The message to send, max 2000 characters',
+          nullable: false,
         },
       },
-      required: ["message"],
+      required: ['message'],
     },
   },
-];
-
+]
 // ─── Tool Executors ──────────────────────────────────────────────────────────
 
 export type ToolResult =
