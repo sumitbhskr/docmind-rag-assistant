@@ -347,8 +347,8 @@ docmind-fresh/
 
 ```powershell
 # 1. Clone the repo
-git clone https://github.com/your-username/docmind-fresh
-cd docmind-fresh
+git clone https://github.com/sumitbhskr/docmind-rag-assistant
+cd docmind-rag-assistant
 
 # 2. Install dependencies
 npm install
