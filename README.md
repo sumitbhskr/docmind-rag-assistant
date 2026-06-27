@@ -21,10 +21,13 @@
 | `demo@docmind.app` | `Demo@12345` |
 
 **Try these flows to see it in action:**
-1. Upload `workspace-a.txt` to **Workspace A** → ask *"What is the revenue?"* → answer cites A's docs
-2. Switch to **Workspace B** → ask the same question → *"I don't have information about that in this workspace's documents"* — no data leaks
-3. Say *"Save a task to review the Q3 report"* → `save_task` tool fires, appears in Tool Log
-4. Say *"Notify the team: Q3 review is scheduled"* → Discord webhook delivers message
+1. Login with demo credentials → Project Alpha is preloaded with a resume document
+   → Ask: *"What are Sumit's technical skills?"* → answer cites Alpha's docs
+2. Switch to **Project Beta** → ask the same question
+   → *"I don't have information about that in this workspace's documents"* — isolation proof
+3. In Project Beta → ask: *"What is TechCorp's revenue?"* → `$2.5 million` from beta-doc.txt
+4. Say *"Save a task to review the Q3 report"* → `save_task` tool fires, appears in Tool Log
+5. Say *"Notify the team: Q3 review is scheduled"* → Discord webhook delivers message
 
 ---
 
