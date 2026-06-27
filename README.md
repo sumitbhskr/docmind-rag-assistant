@@ -390,7 +390,7 @@ npm run dev
 
 ## Vercel Deployment
 
-# Deployment is via GitHub integration (no CLI needed)
+ Deployment is via GitHub integration (no CLI needed)
  1. Go to vercel.com → New Project
  2. Import GitHub repo: sumitbhskr/docmind-rag-assistant
  3. Set all 5 environment variables in Vercel dashboard
