@@ -390,17 +390,6 @@ npm run dev
 
 ## Vercel Deployment
 
-```powershell
-# Install Vercel CLI
-npm install -g vercel
-
-# Deploy (first time — follow prompts)
-vercel
-
-# All subsequent deploys
-vercel --prod
-```
-
 # Deployment is via GitHub integration (no CLI needed)
  1. Go to vercel.com → New Project
  2. Import GitHub repo: sumitbhskr/docmind-rag-assistant
