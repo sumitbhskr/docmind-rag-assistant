@@ -401,6 +401,12 @@ vercel
 vercel --prod
 ```
 
+# Deployment is via GitHub integration (no CLI needed)
+ 1. Go to vercel.com → New Project
+ 2. Import GitHub repo: sumitbhskr/docmind-rag-assistant
+ 3. Set all 5 environment variables in Vercel dashboard
+ 4. Every push to main branch auto-deploys
+
 **Set environment variables in Vercel dashboard:**  
 Project → Settings → Environment Variables → add all 5 variables above.
 
