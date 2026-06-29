@@ -1,14 +1,12 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import Groq from "groq-sdk";
 
-if (!process.env.GEMINI_API_KEY) {
-  throw new Error("GEMINI_API_KEY is not set");
+if (!process.env.GROQ_API_KEY) {
+  throw new Error("GROQ_API_KEY is not set");
 }
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
-export const chatModel = genAI.getGenerativeModel({
-  model: "gemini-2.5-flash",
-});
+export const chatModel = groq;
 
 export async function embedText(text: string): Promise<number[]> {
   const response = await fetch(
@@ -20,9 +18,7 @@ export async function embedText(text: string): Promise<number[]> {
     },
   );
   const data = await response.json();
-  if (!data.embedding) {
-    console.error('Embed API response:', JSON.stringify(data))
-    throw new Error('Embedding failed: ' + JSON.stringify(data))
-  }
+  if (!data.embedding)
+    throw new Error("Embedding failed: " + JSON.stringify(data));
   return data.embedding.values;
 }
